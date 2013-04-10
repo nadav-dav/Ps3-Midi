@@ -12,6 +12,9 @@
       , "node-hid":"*"
       , "rekuire":"*"
   },
+  "devDependencies": {
+    "proxyquire":"*"
+  },
   "repository": "",
   "author": "",
   "license": "BSD"
