@@ -5,15 +5,11 @@ var EventEmitter = rek('events').EventEmitter;
 var TriggerController = rek('TriggerController');
 
 describe("TriggerController", function(){
-    var controller;
     var device = new EventEmitter();
-    beforeEach(function(){
-        controller = new TriggerController(device,0);
-    });
-    
+
     it("should callback with 'on' when the signal increases", function(){
         var callback = createSpy('callback');
-        controller.listen(callback);
+        TriggerController(device,0,callback);
         emitStream(device,[0,0,0,0,10,20,30,40,50]);
         expect(callback.callCount).toBe(1);
         expect(callback).toHaveBeenCalledWith(true);
@@ -24,7 +20,7 @@ describe("TriggerController", function(){
         var callback = createSpy('callback').andCallFake(function(state){
             states.push(state);
         });
-        controller.listen(callback);
+        TriggerController(device,0,callback);
         emitStream(device,[0,0,20,30,40,0,0,0]);
         expect(states).toEqual([true,false]);
     });

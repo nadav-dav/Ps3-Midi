@@ -15,7 +15,7 @@ describe("DualShock", function(){
 
     beforeEach(function(){
         HID = { HID: HIDDevice }
-        var DualShock = proxyquire(rek({localPath:'DualShock'}), { 'node-hid': HID });;
+        var DualShock = proxyquire(rek().path('DualShock'), { 'node-hid': HID });;
         dualshock = new DualShock();
     });
 

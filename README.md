@@ -19,7 +19,7 @@ What's functionable
 
 - [x] Seeking for connected controller
 - [x] Mapping button press to midi node
-- [ ] Create different controllers for Triggers, Toggles and Pressure
+- [x] Create different controllers for Triggers, Toggles and Pressure
 - [ ] Create ability for _shift_ buttons
 - [ ] Ability for the little joysticks to be operational like dials ( [Pacemaker style] [packmaker] - pull sideways, and then clockwise)
 
