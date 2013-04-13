@@ -3,9 +3,11 @@
 var rek = require('rekuire');
 var EventEmitter = rek('events').EventEmitter;
 var ValueTriggerController = rek('ValueTriggerController');
+var Stream = rek('Stream');
 
 describe("ValueTriggerController", function(){
     var device = new EventEmitter();
+    var stream = Stream(device,0,128);
     var TIGGER_VALUE = 20;
 
     it("should callback with 'on' when the exact value is met", function(){
@@ -13,7 +15,7 @@ describe("ValueTriggerController", function(){
         var callback = createSpy('callback').andCallFake(function(state){
             states.push(state);
         });
-        ValueTriggerController(device,0,TIGGER_VALUE,callback);
+        ValueTriggerController(stream, TIGGER_VALUE, callback);
         emitStream(device,[0,0,10,20,20,20]);
         expect(states).toEqual([true]);
     });
@@ -23,7 +25,7 @@ describe("ValueTriggerController", function(){
         var callback = createSpy('callback').andCallFake(function(state){
             states.push(state);
         });
-        ValueTriggerController(device,0,TIGGER_VALUE,callback);
+        ValueTriggerController(stream, TIGGER_VALUE,callback);
         emitStream(device,[0,0,10,20,20,20,50,70]);
         expect(states).toEqual([true,false]);
     });
