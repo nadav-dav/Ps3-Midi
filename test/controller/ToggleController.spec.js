@@ -16,6 +16,16 @@ describe("ToggleController", function(){
         emitStream(device,[0,0,20,30,40,0,0,0,20,30,0,0,0]);
         expect(states).toEqual([true,false]);
     });
+
+    it("should support initial value injection", function(){
+        var states = [];
+        var callback = createSpy('callback').andCallFake(function(state){
+            states.push(state);
+        });
+        ToggleController(device,0,callback).initValue(true);
+        emitStream(device,[0,0,20,30,40,0,0,0,0,0]);
+        expect(states).toEqual([false]);
+    });
 });
 
 function emitStream(device,stream){
