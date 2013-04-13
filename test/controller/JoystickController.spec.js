@@ -46,6 +46,26 @@ describe("JoystickController", function(){
             expect(dataReceived).toEqual([ [MODE_DOWN, 0], [NO_MODE,null] ]);
         });
     });
+
+    it("should support init values", function(){
+        var callback = createSpy('callback');
+        JoystickController(device, X_INPUT_INDEX, Y_INPUT_INDEX, RESOLUTION,callback)
+            .initValues({1: 65});
+        emitStream(device,[[127,127],[127,127],[127,0]]);
+        expect(callback).toHaveBeenCalledWith(MODE_UP,65);
+    });
+
+    it("should support reset values", function(){
+        var dataReceived = [];
+        var callback = createSpy('callback').andCallFake(function(mode, value){
+            dataReceived.push([mode, value]);
+        });
+
+        JoystickController(device, X_INPUT_INDEX, Y_INPUT_INDEX, RESOLUTION,callback)
+            .resetValues({3: 120});
+        emitStream(device,[[127,255],[255,127],[127,127],[127,255]]);
+        expect(dataReceived).toEqual([ [MODE_DOWN, 0], [MODE_DOWN, 64], [NO_MODE,null], [MODE_DOWN, 120]]);
+    });
 });
 
 function emitStream(device,stream){
