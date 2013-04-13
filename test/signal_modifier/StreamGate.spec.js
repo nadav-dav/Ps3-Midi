@@ -2,11 +2,11 @@
 
 var rek = require('rekuire');
 var EventEmitter = rek('events').EventEmitter;
-var Stream = rek('Stream');
+var StreamGate = rek('StreamGate');
 
 var STREAM_INDEX=0;
 
-describe("Stream", function(){
+describe("StreamGate", function(){
     var device = new EventEmitter();
 
     it("should pass the signal through", function(){
@@ -14,21 +14,32 @@ describe("Stream", function(){
         var callback = createSpy('callback').andCallFake(function(data){
             dataReceived.push(data);
         });
-        Stream(device, STREAM_INDEX)
+        StreamGate(device, STREAM_INDEX,0,127)
             .on('data',callback);
         emitStream(device,[10,20,30]);
         expect(dataReceived).toEqual([10,20,30])
     });
 
-    it("should treat no stream index as 0", function(){
+    it("should filter signal that are below the lower threshold", function(){
         var dataReceived = []
         var callback = createSpy('callback').andCallFake(function(data){
             dataReceived.push(data);
         });
-        Stream(device)
+        StreamGate(device, STREAM_INDEX,50,127)
             .on('data',callback);
-        emitStream(device,[10,20,30]);
-        expect(dataReceived).toEqual([10,20,30])
+        emitStream(device,[10,20,30,40,50,60,70,80]);
+        expect(dataReceived).toEqual([50,60,70,80]);
+    });
+
+    it("should filter signal that are above the higher threshold", function(){
+        var dataReceived = []
+        var callback = createSpy('callback').andCallFake(function(data){
+            dataReceived.push(data);
+        });
+        StreamGate(device, STREAM_INDEX,0,50)
+            .on('data',callback);
+        emitStream(device,[10,20,30,40,50,60,70,80]);
+        expect(dataReceived).toEqual([10,20,30,40,50]);
     });
 });
 
