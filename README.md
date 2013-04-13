@@ -14,14 +14,15 @@ To Run
 > 1. run  **"node . "**
 
 
-What's functionable
+What's functional
 -----------------
 
 - [x] Seeking for connected controller
 - [x] Mapping button press to midi node
 - [x] Create different controllers for Triggers, Toggles and Pressure
-- [ ] Create ability for _shift_ buttons
-- [x] Ability for the little joysticks to be operational like dials ( [Pacemaker style] [packmaker] - pull sideways, and then clockwise)
+- [x] Create ability for _shift_ buttons
+- [x] Ability for the little joysticks to be operational like dials ( [Pacemaker style] [pacemaker] - pull sideways, and then clockwise)
+- [ ] Read mapping from a config file
 
 
 Developers
@@ -29,4 +30,4 @@ Developers
 to test, run ```npm test```
 
 
-[packmaker]:http://www.youtube.com/watch?v=F9_0tUxdTZY
+[pacemaker]:http://www.youtube.com/watch?v=F9_0tUxdTZY
