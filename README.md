@@ -21,8 +21,12 @@ What's functionable
 - [x] Mapping button press to midi node
 - [x] Create different controllers for Triggers, Toggles and Pressure
 - [ ] Create ability for _shift_ buttons
-- [ ] Ability for the little joysticks to be operational like dials ( [Pacemaker style] [packmaker] - pull sideways, and then clockwise)
+- [x] Ability for the little joysticks to be operational like dials ( [Pacemaker style] [packmaker] - pull sideways, and then clockwise)
 
+
+Developers
+-----------------
+to test, run ```npm test```
 
 
 [packmaker]:http://www.youtube.com/watch?v=F9_0tUxdTZY
