@@ -20,7 +20,7 @@ describe("Stream", function(){
         expect(dataReceived).toEqual([10,20,30])
     });
 
-    it("should treat no stream index as 0", function(){
+    it("should treat 'no stream index' as 0", function(){
         var dataReceived = []
         var callback = createSpy('callback').andCallFake(function(data){
             dataReceived.push(data);

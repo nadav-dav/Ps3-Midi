@@ -23,7 +23,7 @@ describe("JoystickController", function(){
             var callback = createSpy('callback');
             JoystickController(device, X_INPUT_INDEX, Y_INPUT_INDEX, RESOLUTION,callback);
             emitStream(device,[[127,127],[127,127],[127,255]]);
-            expect(callback).toHaveBeenCalledWith(MODE_UP,0);
+            expect(callback).toHaveBeenCalledWith(MODE_DOWN,0);
         });
 
         it("should not switch between mode if not returned to center", function(){
@@ -33,7 +33,7 @@ describe("JoystickController", function(){
             });
             JoystickController(device, X_INPUT_INDEX, Y_INPUT_INDEX, RESOLUTION,callback);
             emitStream(device,[[127,127],[127,127],[127,255],[255,127]]);
-            expect(dataReceived).toEqual([ [MODE_UP, 0], [MODE_UP, 64]]);
+            expect(dataReceived).toEqual([ [MODE_DOWN, 0], [MODE_DOWN, 64]]);
         });
 
         it("should send mode NO_MODE only once", function(){
@@ -43,7 +43,7 @@ describe("JoystickController", function(){
             });
             JoystickController(device, X_INPUT_INDEX, Y_INPUT_INDEX, RESOLUTION,callback);
             emitStream(device,[[127,255], [127,127],[127,127],[127,127]]);
-            expect(dataReceived).toEqual([ [MODE_UP, 0], [NO_MODE,null] ]);
+            expect(dataReceived).toEqual([ [MODE_DOWN, 0], [NO_MODE,null] ]);
         });
     });
 });
