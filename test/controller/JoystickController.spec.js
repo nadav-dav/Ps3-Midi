@@ -26,7 +26,6 @@ describe("JoystickController", function(){
             expect(callback).toHaveBeenCalledWith(MODE_UP,0);
         });
 
-        // for example, when the joystick is pressed up, it should engage mode 1
         it("should not switch between mode if not returned to center", function(){
             var dataReceived = [];
             var callback = createSpy('callback').andCallFake(function(mode, value){
@@ -37,15 +36,14 @@ describe("JoystickController", function(){
             expect(dataReceived).toEqual([ [MODE_UP, 0], [MODE_UP, 64]]);
         });
 
-
-        xit("should set mode according to the joystick position", function(){
+        it("should send mode NO_MODE only once", function(){
             var dataReceived = [];
-            var callback = createSpy('callback').andCallFake(function(data){
-                dataReceived.push(data);
+            var callback = createSpy('callback').andCallFake(function(mode, value){
+                dataReceived.push([mode, value]);
             });
             JoystickController(device, X_INPUT_INDEX, Y_INPUT_INDEX, RESOLUTION,callback);
-            emitStream(device,[[0,0],[0,0],[127,255],[127,255]]);
-            expect(dataReceived).toEqual([0]);
+            emitStream(device,[[127,255], [127,127],[127,127],[127,127]]);
+            expect(dataReceived).toEqual([ [MODE_UP, 0], [NO_MODE,null] ]);
         });
     });
 });
