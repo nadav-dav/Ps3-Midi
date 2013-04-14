@@ -9,7 +9,7 @@ To Run
 -------
 
 > 1. make sure you have [NodeJs][NodeJs] installed!
-> 1. pair the PS3 controller to your Bluetooth. here is [how to].[pairOsx]
+> 1. pair the PS3 controller to your Bluetooth. here is [how to][pairOsx].
 > 1. clone/download the project
 > 1. navigate to the download folder using 'terminal'
 > 1. run  **"npm start"**
