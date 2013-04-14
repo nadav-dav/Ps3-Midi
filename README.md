@@ -8,10 +8,11 @@ Ps3 DualShock -> Midi
 To Run
 -------
 
-> 1. pair the PS3 controller to your Bluetooth
-> 1. clone the project
-> 1. run  **"npm install"**
-> 1. run  **"node . "**
+> 1. make sure you have [NodeJs][NodeJs] installed!
+> 1. pair the PS3 controller to your Bluetooth. here is [how to].[pairOsx]
+> 1. clone/download the project
+> 1. navigate to the download folder using 'terminal'
+> 1. run  **"npm start"**
 
 
 What's functional
@@ -31,3 +32,5 @@ to test, run ```npm test```
 
 
 [pacemaker]:http://www.youtube.com/watch?v=F9_0tUxdTZY
+[NodeJs]:http://nodejs.org/
+[pairOsx]:http://www.youtube.com/watch?v=5tEiiveuhRA

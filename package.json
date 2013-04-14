@@ -5,12 +5,13 @@
   "main": "lib/index.js",
   "scripts": {
     "test": "npm install && jasmine-node ./test",
-    "start": "node lib/index"
+    "start": "node ."
   },
   "dependencies": {
       "midi":"*"
       , "node-hid":"*"
       , "rekuire":"*"
+      , "appjs":"*"
   },
   "devDependencies": {
     "proxyquire":"*"
