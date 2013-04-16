@@ -8,6 +8,8 @@ Ps3 DualShock -> Midi
 To Run
 -------
 
+_notice: this module was currently tested under osx only_
+
 > 1. make sure you have [NodeJs][NodeJs] installed!
 > 1. pair the PS3 controller to your Bluetooth. here is [how to][pairOsx].
 > 1. clone/download the project
