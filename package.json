@@ -4,7 +4,7 @@
   "description": "ERROR: No README.md file found!",
   "main": "lib/index.js",
   "scripts": {
-    "test": "npm install && jasmine-node ./test",
+    "test": "jasmine-node ./test",
     "start": "node ."
   },
   "dependencies": {

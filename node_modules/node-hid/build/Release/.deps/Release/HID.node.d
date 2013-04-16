@@ -1,0 +1,1 @@
+cmd_Release/HID.node := ./gyp-mac-tool flock ./Release/linker.lock c++ -shared -Wl,-search_paths_first -mmacosx-version-min=10.5 -arch x86_64 -L./Release -install_name @rpath/HID.node  -o Release/HID.node Release/obj.target/HID/src/HID.o Release/hidapi.a -undefined dynamic_lookup
